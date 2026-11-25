@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AppLayout from "./components/AppLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Inventory from "./pages/Inventory";
@@ -17,15 +18,17 @@ function App() {
 
       {/* Requieren sesión (USER o ADMIN) */}
       <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Navigate to="/inventory" replace />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/loans" element={<Loans />} />
-        <Route path="/forbidden" element={<Forbidden />} />
-      </Route>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Navigate to="/inventory" replace />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/loans" element={<Loans />} />
+          <Route path="/forbidden" element={<Forbidden />} />
 
-      {/* Solo ADMIN */}
-      <Route element={<ProtectedRoute role="ADMIN" />}>
-        <Route path="/admin" element={<Admin />} />
+          {/* Solo ADMIN */}
+          <Route element={<ProtectedRoute role="ADMIN" />}>
+            <Route path="/admin" element={<Admin />} />
+          </Route>
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFound />} />
