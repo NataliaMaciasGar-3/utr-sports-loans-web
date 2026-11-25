@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getItems, getSports } from "../services/itemsService";
 import ItemCard from "../components/ItemCard";
+import LoanModal from "../components/LoanModal";
 import "./Inventory.css";
 
 export default function Inventory() {
@@ -12,6 +13,8 @@ export default function Inventory() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [reloadKey, setReloadKey] = useState(0);
+
+    const [selectedItem, setSelectedItem] = useState(null);
 
     // Disciplinas para los chips (una sola vez al montar)
     useEffect(() => {
@@ -55,8 +58,10 @@ export default function Inventory() {
         setOnlyAvailable(false);
         setSearch("");
     };
-    // El modal de préstamo se conecta en el siguiente paso
-    const handleRequest = (item) => console.log("Solicitar préstamo:", item);
+    // El modal de préstamo
+    const handleRequest = (item) => setSelectedItem(item);
+    const handleCloseModal = () => setSelectedItem(null);
+    const handleLoanCreated = () => setReloadKey((k) => k + 1); // vuelve a pedir el stock
 
     const term = search.trim().toLowerCase();
     const visibleItems = items.filter(
@@ -138,6 +143,14 @@ export default function Inventory() {
                         <ItemCard key={item.id} item={item} onRequest={handleRequest} />
                     ))}
                 </div>
+            )}
+
+            {selectedItem && (
+                <LoanModal
+                    item={selectedItem}
+                    onClose={handleCloseModal}
+                    onCreated={handleLoanCreated}
+                />
             )}
         </>
     );
