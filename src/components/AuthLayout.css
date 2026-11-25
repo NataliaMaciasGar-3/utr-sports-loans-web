@@ -1,0 +1,245 @@
+:root {
+    --red-900: #5c0716;
+    --red-700: #8f0a22;
+    --red-600: #c8102e;
+    --red-500: #d0082b;
+    --pink-500: #f43560;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #cbd5e1;
+    --error: #b91c1c;
+    --error-bg: #fdecef;
+}
+
+.auth {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    background: var(--surface);
+    color-scheme: light;
+    color: #000;
+    text-align: left;
+}
+
+.auth__title {
+    color: var(--red-700);
+}
+
+.auth__subtitle {
+    color: #000;
+}
+
+.auth__subtitle a {
+    color: #0369a1;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Panel izquierdo con círculos concéntricos */
+.auth__panel {
+    position: relative;
+    overflow: hidden;
+    background: var(--red-900);
+    color: #fff;
+    padding: 64px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.auth__panel::before,
+.auth__panel::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.auth__panel::before {
+    width: 620px;
+    height: 620px;
+    right: -260px;
+    bottom: -120px;
+    background: var(--red-600);
+}
+
+.auth__panel::after {
+    width: 400px;
+    height: 400px;
+    right: -170px;
+    bottom: -10px;
+    background: var(--pink-500);
+}
+
+.auth__panel>* {
+    position: relative;
+    z-index: 1;
+}
+
+.auth__panel-logo {
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+}
+
+.auth__panel-text {
+    max-width: 380px;
+    line-height: 1.6;
+    color: #fde4e9;
+}
+
+.auth__panel-link {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    width: fit-content;
+}
+
+/* Lado del formulario */
+.auth__form-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+.auth__form-box {
+    width: 100%;
+    max-width: 410px;
+}
+
+.auth__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    color: var(--red-700);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.auth__brand img {
+    height: 44px;
+    width: auto;
+}
+
+.auth__title {
+    margin: 0 0 6px;
+    font-size: 28px;
+    color: var(--red-700);
+}
+
+.auth__subtitle {
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.auth__subtitle a {
+    color: #0369a1;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Etiquetas en negro */
+.field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+    text-align: left;
+}
+
+/* Input: fondo blanco, borde rojo, texto negro */
+.field input {
+    padding: 11px 12px;
+    border: 1.5px solid var(--red-600);
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+}
+
+/* Texto de ejemplo: gris claro y sin negritas */
+.field input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.field input:focus {
+    outline: 2px solid var(--red-600);
+    outline-offset: 1px;
+}
+
+.field input.is-invalid {
+    border-color: var(--error);
+}
+
+.field__error {
+    font-size: 12px;
+    color: var(--error);
+}
+
+/* Evita el fondo azul/gris del autocompletado del navegador */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0 100px #fff inset;
+    caret-color: #000;
+}
+
+.alert {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--error-bg);
+    border: 1px solid #f5b5c0;
+    color: var(--error);
+    font-size: 13px;
+}
+
+.btn-primary {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red-500);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--red-700);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Móvil / pantallas angostas: se oculta el panel */
+@media (max-width: 800px) {
+    .auth {
+        grid-template-columns: 1fr;
+    }
+
+    .auth__panel {
+        display: none;
+    }
+}
