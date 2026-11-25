@@ -1,0 +1,298 @@
+.panel {
+    background: var(--surface);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.panel__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.panel__title {
+    margin: 0 0 6px;
+    font-size: 24px;
+    color: #0f172a;
+}
+
+.panel__subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #475569;
+}
+
+/* Interruptor "Solo disponibles" */
+.switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch__track {
+    width: 36px;
+    height: 20px;
+    border-radius: 999px;
+    background: #cbd5e1;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.switch__track::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.2s;
+}
+
+.switch input:checked+.switch__track {
+    background: var(--red-500);
+}
+
+.switch input:checked+.switch__track::after {
+    transform: translateX(16px);
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chip:hover {
+    background: #e2e8f0;
+}
+
+.chip.is-active {
+    background: var(--red-500);
+    color: #fff;
+}
+
+.search {
+    min-width: 240px;
+    padding: 9px 12px;
+    border: 1.5px solid var(--red-600);
+    border-radius: 8px;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.search::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+/* Grilla de tarjetas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.item-card {
+    background: var(--surface);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.item-card__sport {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.item-card__name {
+    margin: 0 0 20px;
+    font-size: 17px;
+    color: #0f172a;
+    min-height: 44px;
+}
+
+.item-card__stock {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.item-card__stock strong {
+    color: #0f172a;
+}
+
+.badge {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.badge--code {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: ui-monospace, monospace;
+}
+
+.badge--good {
+    background: #d1fae5;
+    color: #047857;
+}
+
+.badge--new {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.badge--worn {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.btn-request {
+    margin-top: auto;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red-500);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-request:hover:not(:disabled) {
+    background: var(--red-700);
+}
+
+.btn-request:disabled {
+    background: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.btn-request--inline {
+    margin-top: 12px;
+    padding: 10px 20px;
+}
+
+.btn-outline {
+    margin-top: 12px;
+    padding: 10px 20px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #0f172a;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Estados: carga, error, vacío */
+.item-card--skeleton {
+    height: 190px;
+    background: linear-gradient(90deg, #f1f5f9, #e2e8f0, #f1f5f9);
+    background-size: 200% 100%;
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.state {
+    background: var(--surface);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.state h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #0f172a;
+}
+
+.state p {
+    margin: 0;
+    color: #475569;
+    font-size: 14px;
+}
+
+.state--error {
+    border-color: #f5b5c0;
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel__head {
+        flex-direction: column;
+    }
+
+    .search {
+        width: 100%;
+    }
+}

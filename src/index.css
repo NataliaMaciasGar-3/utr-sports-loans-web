@@ -1,3 +1,18 @@
+:root {
+    --red-900: #5c0716;
+    --red-700: #8f0a22;
+    --red-600: #c8102e;
+    --red-500: #d0082b;
+    --pink-500: #f43560;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #cbd5e1;
+    --error: #b91c1c;
+    --error-bg: #fdecef;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
