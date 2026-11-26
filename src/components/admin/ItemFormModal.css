@@ -1,0 +1,82 @@
+/* Los campos solo se marcan en rojo al enfocarlos (o con error) */
+.form-modal {
+    gap: 18px;
+}
+
+.form-modal .field {
+    gap: 8px;
+}
+
+.form-modal .field label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #0f172a;
+}
+
+.form-modal .field input,
+.form-modal .field select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.form-modal .field input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.form-modal .field input:focus,
+.form-modal .field select:focus {
+    outline: none;
+    border-color: var(--red-600);
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+}
+
+.form-modal .field input.is-invalid,
+.form-modal .field select.is-invalid {
+    border-color: var(--error);
+}
+
+/* Flecha propia para las listas desplegables */
+.form-modal .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%230f172a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+    cursor: pointer;
+}
+
+.form-modal .field__help {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Resumen del ítem en la edición */
+.form-modal .loan-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.form-modal .loan-item__top {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.form-modal .loan-item strong {
+    font-size: 17px;
+    color: #0f172a;
+}
+
+.form-modal .loan-item__stock {
+    color: #64748b;
+}

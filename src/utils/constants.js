@@ -1,0 +1,1 @@
+export const PHYSICAL_STATES = ["NUEVO", "BUENO", "DESGASTADO"];
