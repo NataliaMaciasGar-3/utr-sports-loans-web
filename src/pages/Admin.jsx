@@ -1,17 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminInventory from "../components/admin/AdminInventory";
+import AdminReturns from "../components/admin/AdminReturns";
+import { getLoans } from "../services/loansService";
 import "./Admin.css";
 
-const TABS = [
-    { key: "inventory", label: "Inventario" },
-    { key: "returns", label: "Devoluciones" },
-    { key: "users", label: "Usuarios" },
-];
-
-export default function Admin() {
+const Admin = () => {
     const [tab, setTab] = useState("inventory");
 
+    const [loans, setLoans] = useState([]);
+    const [loansLoading, setLoansLoading] = useState(true);
+    const [loansError, setLoansError] = useState("");
+    const [reloadKey, setReloadKey] = useState(0);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const loadLoans = async () => {
+            setLoansLoading(true);
+            setLoansError("");
+            try {
+                const data = await getLoans();
+                if (!cancelled) setLoans(data);
+            } catch (err) {
+                if (!cancelled) setLoansError(err.message);
+            } finally {
+                if (!cancelled) setLoansLoading(false);
+            }
+        };
+
+        loadLoans();
+        return () => {
+            cancelled = true;
+        };
+    }, [reloadKey]);
+
     const handleSelectTab = (key) => setTab(key);
+    const handleReloadLoans = () => setReloadKey((k) => k + 1);
+
+    const pendingCount = loans.filter((l) => l.estatus === "ACTIVO").length;
+
+    const tabs = [
+        { key: "inventory", label: "Inventario" },
+        { key: "returns", label: "Devoluciones", badge: pendingCount },
+        { key: "users", label: "Usuarios" },
+    ];
 
     return (
         <>
@@ -25,7 +57,7 @@ export default function Admin() {
                     </div>
 
                     <div className="segmented" role="tablist">
-                        {TABS.map((t) => (
+                        {tabs.map((t) => (
                             <button
                                 key={t.key}
                                 role="tab"
@@ -34,6 +66,7 @@ export default function Admin() {
                                 onClick={() => handleSelectTab(t.key)}
                             >
                                 {t.label}
+                                {t.badge > 0 && <span className="tab-badge">{t.badge}</span>}
                             </button>
                         ))}
                     </div>
@@ -41,8 +74,17 @@ export default function Admin() {
             </section>
 
             {tab === "inventory" && <AdminInventory />}
-            {tab === "returns" && <div className="state"><h2>Devoluciones</h2><p>Próximamente.</p></div>}
+            {tab === "returns" && (
+                <AdminReturns
+                    loans={loans}
+                    loading={loansLoading}
+                    error={loansError}
+                    onReload={handleReloadLoans}
+                />
+            )}
             {tab === "users" && <div className="state"><h2>Usuarios</h2><p>Próximamente.</p></div>}
         </>
     );
 }
+
+export default Admin;
