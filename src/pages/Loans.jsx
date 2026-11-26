@@ -13,7 +13,7 @@ const FILTERS = [
 const formatDate = (value) =>
     value ? new Date(value).toLocaleString("es-MX", { dateStyle: "medium", timeStyle: "short" }) : "—";
 
-export default function Loans() {
+const Loans = () => {
     const navigate = useNavigate();
     const { isAdmin } = useAuth();
 
@@ -188,3 +188,5 @@ export default function Loans() {
         </>
     );
 }
+
+export default Loans;

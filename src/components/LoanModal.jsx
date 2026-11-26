@@ -5,7 +5,7 @@ import "./LoanModal.css";
 
 const SUGGESTIONS = ["Cancha 1 - Fútbol", "Cancha 2 - Torneo", "Gimnasio - Básquetbol", "Clase Educación Física"];
 
-export default function LoanModal({ item, onClose, onCreated }) {
+const LoanModal = ({ item, onClose, onCreated }) => {
     const navigate = useNavigate();
 
     const [cantidad, setCantidad] = useState("1");
@@ -192,3 +192,5 @@ export default function LoanModal({ item, onClose, onCreated }) {
         </div>
     );
 }
+
+export default LoanModal;
