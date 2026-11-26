@@ -1,0 +1,112 @@
+/* Tarjetas BUENO / DAÑADO */
+.choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.choice input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.choice strong {
+    font-size: 14px;
+    color: #0f172a;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.choice small {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.choice__icon {
+    font-size: 20px;
+    color: #64748b;
+}
+
+.choice:focus-within {
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+}
+
+.choice.is-good {
+    border-color: #10b981;
+    background: #ecfdf5;
+}
+
+.choice.is-good .choice__icon,
+.choice.is-good strong {
+    color: #047857;
+}
+
+.choice.is-bad {
+    border-color: var(--error);
+    background: #fef2f2;
+}
+
+.choice.is-bad .choice__icon,
+.choice.is-bad strong {
+    color: var(--error);
+}
+
+/* Aviso de baja de inventario */
+.warning {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.required {
+    color: var(--error);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Textarea con el mismo estilo que los demás campos del modal */
+.form-modal .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    resize: vertical;
+    min-height: 84px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.form-modal .field textarea::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+}
+
+.form-modal .field textarea:focus {
+    outline: none;
+    border-color: var(--red-600);
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+}
+
+.form-modal .field textarea.is-invalid {
+    border-color: var(--error);
+}

@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import Forbidden from "./pages/Forbidden";
 import NotFound from "./pages/NotFound";
 
-function App() {
+const App = () => {
   return (
     <Routes>
       {/* Públicas */}
