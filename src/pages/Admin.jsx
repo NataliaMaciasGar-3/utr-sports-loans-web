@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AdminInventory from "../components/admin/AdminInventory";
 import AdminReturns from "../components/admin/AdminReturns";
 import { getLoans } from "../services/loansService";
+import AdminUsers from "../components/admin/AdminUsers";
 import "./Admin.css";
 
 const Admin = () => {
@@ -82,7 +83,7 @@ const Admin = () => {
                     onReload={handleReloadLoans}
                 />
             )}
-            {tab === "users" && <div className="state"><h2>Usuarios</h2><p>Próximamente.</p></div>}
+            {tab === "users" && <AdminUsers />}
         </>
     );
 }
