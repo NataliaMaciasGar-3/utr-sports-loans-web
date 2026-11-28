@@ -5,9 +5,9 @@ const API_APP_TOKEN = import.meta.env.VITE_API_APP_TOKEN;
 const TOKEN_KEY = "user_jwt_token";
 
 export const tokenStorage = {
-    get: () => localStorage.getItem(TOKEN_KEY),
-    set: (token) => localStorage.setItem(TOKEN_KEY, token),
-    clear: () => localStorage.removeItem(TOKEN_KEY),
+    get: () => sessionStorage.getItem(TOKEN_KEY),
+    set: (token) => sessionStorage.setItem(TOKEN_KEY, token),
+    clear: () => sessionStorage.removeItem(TOKEN_KEY),
 };
 
 // La UI define qué hacer (redirigir a /login, mostrar pantalla 403)
